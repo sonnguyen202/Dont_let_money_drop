@@ -10,9 +10,7 @@ Player::Player(std::shared_ptr<Models>& mod, std::shared_ptr<Shaders>& shader, s
 	m_blood = 3;
 	m_sizeCollide = 15; 
 	m_damage = 0;
-	m_speed = 500;
-	m_timeContinue = 0;
-	m_maxTimeContinue = 0;
+	m_speed = 400;
 	m_isAlive = true;
 
 }
@@ -34,6 +32,7 @@ void Player::Update(float deltatime)
 	if ( m_blood <= 0)
 	{
 		m_isAlive = false;
+		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_GameOver);
 		return;
 	}
 
@@ -85,7 +84,8 @@ void Player::checkConllide(std::vector<std::shared_ptr<Coin>> listCoin, std::vec
 			if (distance(position, sword->Get2DPosition()) < m_sizeCollide + sword->getConllideSize())
 			{
 				sword->setActive(false);
-				GSPlay::m_score += 5;
+				m_blood--;
+
 			}
 		}
 	}

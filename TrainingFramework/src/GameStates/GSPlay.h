@@ -20,7 +20,7 @@ private:
 	std::shared_ptr<Sprite2D> m_BackGround;
 	std::shared_ptr<Text>  m_scoreText;
 	std::shared_ptr<Player> m_Player;
-
+	std::shared_ptr<Text> m_bloodText;
 	std::vector<std::shared_ptr<Coin>> list_Coin;
 	std::vector<std::shared_ptr<Sword>> list_Sword;
 	float m_delayTime;

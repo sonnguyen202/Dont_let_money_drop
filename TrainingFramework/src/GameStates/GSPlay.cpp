@@ -1,9 +1,5 @@
-#include "GSPlay.h"
 #include <sstream>
 #include <iomanip>
-#include <thread>
-
-
 #include "Shaders.h"
 #include "Texture.h"
 #include "Models.h"
@@ -25,7 +21,7 @@ int GSPlay::m_score = 0;
 
 GSPlay::GSPlay()
 {
-	m_delayTime = 0.5;
+	m_delayTime = 0.2;
 	m_score = 0;
 }
 
@@ -47,15 +43,13 @@ void GSPlay::Init()
 	m_BackGround->Set2DPosition(screenWidth / 2, screenHeight / 2);
 	m_BackGround->SetSize(screenWidth, screenHeight);
 
-	//home button
-
-	texture = ResourceManagers::GetInstance()->GetTexture("button_resume");
+	// comback menu
+	texture = ResourceManagers::GetInstance()->GetTexture("button_back");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(screenWidth - 40, 50);
-	button->SetSize(200, 50);
+	button->Set2DPosition(screenWidth - 950, 100);
+	button->SetSize(100, 50);
 	button->SetOnClick([] {
-		exit(0);
-
+		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Menu);
 		});
 
 	m_listButton.push_back(button);
@@ -71,9 +65,10 @@ void GSPlay::Init()
 	//text game title
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
-
 	m_scoreText = std::make_shared< Text>(shader, font, "Score: ", TEXT_COLOR::RED, 1.0);
 	m_scoreText->Set2DPosition(Vector2(5, 25));
+	m_bloodText = std::make_shared< Text>(shader, font, "Blood: ", TEXT_COLOR::RED, 0.8);
+	m_bloodText ->Set2DPosition(Vector2(5, 50));
 }
 
 void GSPlay::Exit()
@@ -112,7 +107,11 @@ void GSPlay::HandleMouseEvents(int x, int y)
 
 void GSPlay::HandleTouchEvents(int x, int y, bool bIsPressed)
 {
-
+	for (auto it : m_listButton)
+	{
+		(it)->HandleTouchEvents(x, y, bIsPressed);
+		if ((it)->IsHandle()) break;
+	}
 }
 
 void GSPlay::Update(float deltaTime)
@@ -128,7 +127,7 @@ void GSPlay::Update(float deltaTime)
 			createRandomCoin();
 		else createRandomeSword();
 
-		m_delayTime = 0.5;
+		m_delayTime = 0.2;
 	}
 	for (auto it : m_listButton)
 	{
@@ -155,8 +154,12 @@ void GSPlay::Update(float deltaTime)
 	//update score
 	std::stringstream stream;
 	stream << std::fixed << std::setprecision(0) << m_score;
-	std::string score = "Score" + stream.str();
+	std::string score = "Score: " + stream.str();
 	m_scoreText->setText(score);
+	std::stringstream stream1;
+	stream1 << std::fixed << std::setprecision(0) << m_Player-> getBlood();
+	std::string blood = "Blood: " + stream1.str();
+	m_bloodText->setText(blood);
 }
 
 
@@ -179,14 +182,17 @@ void GSPlay::Draw()
 	
 		
 	m_scoreText->Draw();
-	m_Player->Draw();
+	if (m_Player->isAlive())
+	{
+		m_Player->Draw();
+	}
+	m_bloodText->Draw();
 	
 }
 
 void GSPlay::createRandomCoin()
 {
-	int range = screenWidth - 100 + 1;
-	int num = rand() % range + 100;
+	int num = rand() % (screenWidth -50 + 1) + 50;
 	Vector2 pos;
 	pos.x = num;
 	pos.y = 10;
@@ -212,8 +218,7 @@ void GSPlay::createRandomCoin()
 
 void GSPlay::createRandomeSword()
 {
-	int range = screenWidth - 100 + 1;
-	int num = rand() % range + 100;
+	int num = rand() % ( screenWidth - 50 +1) + 50;
 	Vector2 pos;
 	pos.x = num;
 	pos.y = 10;

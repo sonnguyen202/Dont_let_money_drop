@@ -10,8 +10,6 @@ private:
 	float  m_sizeCollide;
 	float m_damage;
 	float m_speed;
-	float m_timeContinue;
-	float m_maxTimeContinue;
 	bool m_isAlive;
 
 	float distance(Vector2 position, Vector2 destination);

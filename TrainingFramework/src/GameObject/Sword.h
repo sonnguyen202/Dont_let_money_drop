@@ -11,8 +11,7 @@ private:
 	float m_damage;
 	float m_speed;
 	float m_maxspeed;
-	float m_timeContinue;
-	float m_maxTimeCointinue;
+
 
 public:
 	Sword(std::shared_ptr<Models>& model, std::shared_ptr<Shaders>& shader, std::shared_ptr <Texture>& texture);

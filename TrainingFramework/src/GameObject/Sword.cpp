@@ -13,8 +13,7 @@ Sword::Sword(std::shared_ptr<Models>& mod, std::shared_ptr<Shaders>& shader, std
 	m_damage = 5;
 	m_speed = 200;
 	m_maxspeed = 500;
-	m_timeContinue = 0.0;
-	m_maxTimeCointinue = 10.0;
+
 
 }
 
