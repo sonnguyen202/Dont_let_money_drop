@@ -4,28 +4,27 @@
 
 class Coin : public Sprite2D
 {
-	Coin(std::shared_ptr<Models>& model, std::shared_ptr<Shaders>& shader, std::shared_ptr <Texture>& texture);
-	~Coin();
+public:
 
+	Coin(std::shared_ptr<Models>& model, std::shared_ptr<Shaders>& shader, std::shared_ptr <Texture>& texture);
+	
+	~Coin();
 	bool isActive();
 	void setActive(bool status);
-	void Update(float deltaTime) override;
+	void Update(float deltaTime) ;
 	void setConllideSize(float size);
 	float getConllideSize();
 	void setDamge(float damge);
-	float getDamge();
+	float getDamge();	
 
 private:
 	bool m_active;
 	int m_blood;
-	float  m_sizecollide;
+	float  m_sizeCollide;
 	float m_damage;
 	float m_speed;
 	float m_maxspeed;
-	float m_timeContinue;
-	float m_maxTimeCointinue;
 
-	float distance(Vector2 position, Vector2 destination);
 
 };
 

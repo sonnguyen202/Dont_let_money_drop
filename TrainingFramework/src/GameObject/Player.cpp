@@ -6,15 +6,14 @@
 Player::Player(std::shared_ptr<Models>& mod, std::shared_ptr<Shaders>& shader, std::shared_ptr<Texture>& texture)
 	: Sprite2D(mod, shader, texture)
 {
-	m_position = Vector2(1, 0);
-	bool m_active = false;
-	int m_blood = 3;
-	float  m_sizecollide;
-	float m_damage;
-	float m_speed;
-	float m_maxspeed;
-	float m_timeContinue;
-	float m_maxTimeContinue;
+	m_desPosition = Vector2(0, 0);
+	m_blood = 3;
+	m_sizeCollide = 15; 
+	m_damage = 0;
+	m_speed = 500;
+	m_timeContinue = 0;
+	m_maxTimeContinue = 0;
+	m_isAlive = true;
 
 }
 
@@ -25,11 +24,32 @@ Player::~Player()
 
 void Player::Move(Vector2 pos)
 {
-	m_position = pos;
+	m_desPosition = pos;
 }
 
 void Player::Update(float deltatime)
 {
+	if (!m_isAlive)
+		return;
+	if ( m_blood <= 0)
+	{
+		m_isAlive = false;
+		return;
+	}
+
+	Vector2 position = Get2DPosition();
+
+	if (position.x < m_desPosition.x)
+	{
+		position.x += m_speed * deltatime;
+	}
+
+	if (position.x > m_desPosition.x)
+	{
+		position.x -= m_speed * deltatime;
+	}
+
+	Set2DPosition(position);
 
 }
 
@@ -42,17 +62,44 @@ float Player::distance(Vector2 pos, Vector2 target)
 
 void Player::checkConllide(std::vector<std::shared_ptr<Coin>> listCoin, std::vector<std::shared_ptr<Sword>> listSword)
 {
+	Vector2 position = Get2DPosition();
+
+
+	for (auto coin : listCoin)
+	{
+		if (coin->isActive())
+		{
+			if (distance(position, coin->Get2DPosition()) < m_sizeCollide + coin->getConllideSize())
+			{
+				coin->setActive(false);
+				GSPlay::m_score += 5;
+			}
+		}
+	}
+
+
+	for (auto sword : listSword)
+	{
+		if (sword->isActive())
+		{
+			if (distance(position, sword->Get2DPosition()) < m_sizeCollide + sword->getConllideSize())
+			{
+				sword->setActive(false);
+				GSPlay::m_score += 5;
+			}
+		}
+	}
 
 }
 
 
 void Player::setConllideSize(float size)
 {
-	m_sizecollide = size;
+	m_sizeCollide = size;
 }
 float Player::getConllideSize()
 {
-	return m_sizecollide;
+	return m_sizeCollide;
 }
 
 void Player::setBlood(int blood)
@@ -65,7 +112,7 @@ int Player::getBlood()
 	return m_blood;
 }
 
-bool Player::isLive()
+bool Player::isAlive()
 {
-	return m_active;
+	return m_isAlive;
 }

@@ -51,6 +51,14 @@ void Application::HandleTouchEvent(GLint x, GLint y, bool bIsPresseded)
 		GameStateMachine::GetInstance()->CurrentState()->HandleTouchEvents(x, y, bIsPresseded);
 }
 
+void Application::HandleMouseEvent(GLint x, GLint y)
+{
+	if (GameStateMachine::GetInstance()->HasState())
+		GameStateMachine::GetInstance()->CurrentState()->HandleMouseEvents(x, y);
+}
+
+
+
 void Application::Exit()
 {
 	exit(0);

@@ -3,17 +3,18 @@
 #include "Player.h"
 #include <Sword.h>
 
+
 Sword::Sword(std::shared_ptr<Models>& mod, std::shared_ptr<Shaders>& shader, std::shared_ptr<Texture>& texture)
 	: Sprite2D(mod, shader, texture)
 {
 	m_active = false;
 	m_blood = 3;
-	m_sizecollide = 15;
+	m_sizeCollide = 15;
 	m_damage = 5;
 	m_speed = 200;
 	m_maxspeed = 500;
-	m_timeContinue = 0;
-	m_maxTimeCointinue = 10;
+	m_timeContinue = 0.0;
+	m_maxTimeCointinue = 10.0;
 
 }
 
@@ -32,17 +33,15 @@ void Sword::setActive(bool status) {
 
 void Sword::Update(float deltaTime)
 {
-	if (!m_active)
-		return;
+	//if (!m_active) 
+	//	return;
 
-	if (m_timeContinue > 0)
-	{
-		m_timeContinue = m_timeContinue - deltaTime;
-	}
 
 	Vector2 position = Get2DPosition();
 	position.y = position.y + m_speed * deltaTime;
 	Set2DPosition(position);
+
+	
 
 }
 
@@ -55,15 +54,11 @@ float Sword::getDamge() {
 }
 
 void Sword::setConllideSize(float size) {
-	m_sizecollide = size;
+	m_sizeCollide = size;
 }
 
 float Sword::getConllideSize() {
-	return m_sizecollide;
+	return m_sizeCollide;
 }
 
-float  Sword::distance(Vector2 position, Vector2 destination) {
 
-	return sqrt((position.x - destination.x) * (position.x - destination.x) + (position.y - destination.y) * (position.y - destination.y));
-
-}

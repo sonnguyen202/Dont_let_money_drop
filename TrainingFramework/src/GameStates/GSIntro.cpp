@@ -59,6 +59,11 @@ void GSIntro::HandleTouchEvents(int x, int y, bool bIsPressed)
 
 }
 
+void GSIntro::HandleMouseEvents(int x, int y)
+{
+}
+
+
 void GSIntro::Update(float deltaTime)
 {
 	m_time += deltaTime;

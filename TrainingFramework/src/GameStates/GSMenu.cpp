@@ -61,7 +61,7 @@ void GSMenu::Init()
 	//text game title
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName = std::make_shared< Text>(shader, font, "SAMPLE NAME", TEXT_COLOR::GREEN, 1.0);
+	m_Text_gameName = std::make_shared< Text>(shader, font, "Dont let money drop", TEXT_COLOR::RED, 0.7);
 	m_Text_gameName->Set2DPosition(Vector2(screenWidth / 2 - 80, 120));
 }
 
@@ -90,6 +90,11 @@ void GSMenu::HandleKeyEvents(int key, bool bIsPressed)
 {
 
 }
+
+void GSMenu::HandleMouseEvents(int x, int y)
+{
+}
+
 
 void GSMenu::HandleTouchEvents(int x, int y, bool bIsPressed)
 {

@@ -17,6 +17,8 @@ public:
 	void HandleEvents();
 	void HandleKeyEvents(int key, bool bIsPressed);
 	void HandleTouchEvents(int x, int y, bool bIsPressed);
+	void HandleMouseEvents(int x, int y) override;
+
 	void Update(float deltaTime);
 	void Draw();
 

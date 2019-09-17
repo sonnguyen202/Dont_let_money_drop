@@ -150,7 +150,6 @@ void Sprite2D::Set2DPosition(GLfloat width, GLfloat height)
 void Sprite2D::Set2DPosition(Vector2 pos)
 {
 	m_Vec2DPos = pos;
-
 	float xx = (2.0 * m_Vec2DPos.x) / screenWidth - 1.0;
 	float yy = 1.0 - (2.0 * m_Vec2DPos.y) / screenHeight;
 	m_Vec3Position = Vector3(xx, yy, 1.0);

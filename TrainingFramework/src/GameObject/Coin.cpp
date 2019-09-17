@@ -1,5 +1,5 @@
 #include "GameStates/GSPlay.h"
-#include <Application.h>
+#include "GameManager/ResourceManagers.h"
 #include "Player.h"
 #include <Coin.h>
 
@@ -8,12 +8,10 @@ Coin::Coin (std::shared_ptr<Models>& mod, std::shared_ptr<Shaders>& shader, std:
 {
 	m_active = false;
 	m_blood = 3;
-	m_sizecollide = 15;
+	m_sizeCollide = 20;
 	m_damage = 5;
 	m_speed = 200;
 	m_maxspeed = 500;
-	m_timeContinue = 0;
-	m_maxTimeCointinue = 10;
 
 }
 
@@ -24,21 +22,19 @@ bool Coin::isActive() {
 	return m_active;
 }
 
-void Coin::setActive(bool status) {
-	m_active = status;
-	m_blood = 3;
-}
-
 
 void Coin::Update(float deltaTime)
 {
-	if (!m_active)
-		return;
+	//if (!m_active) 
+	//{
+	//	return;
+	//}
 
-	if (m_timeContinue > 0)
-	{
-		m_timeContinue = m_timeContinue - deltaTime;
-	}
+	//if (m_timeContinue > 0)
+	//{
+	//	m_timeContinue = m_timeContinue - deltaTime;
+	//}
+
 
 	Vector2 position = Get2DPosition();
 	position.y = position.y + m_speed * deltaTime;
@@ -55,15 +51,18 @@ float Coin::getDamge() {
 }
 
 void Coin::setConllideSize(float size) {
-	m_sizecollide = size;
+	m_sizeCollide = size;
 }
 
 float Coin::getConllideSize() {
-	return m_sizecollide;
+	return m_sizeCollide;
 }
 
-float  Coin::distance(Vector2 position, Vector2 destination) {
-
-	return sqrt((position.x - destination.x) * (position.x - destination.x) + (position.y - destination.y) * (position.y - destination.y));
-
+void Coin::setActive(bool status) {
+	m_active = status;
+	m_blood = 3;
 }
+
+
+
+

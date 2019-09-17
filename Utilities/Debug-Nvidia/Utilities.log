@@ -3,13 +3,13 @@
   MemoryOperators.cpp
   MemoryManager.cpp
   U_Math.cpp
-C:\Dont let money drop ( true)\Utilities\src\U_Math.cpp(7,13): warning C4244:  'return': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Dont let money drop ( true)\Utilities\src\U_Math.cpp(101,13): warning C4244:  'return': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\Utilities\src\U_Math.cpp(7,13): warning C4244:  'return': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\Utilities\src\U_Math.cpp(101,13): warning C4244:  'return': conversion from 'double' to 'GLfloat', possible loss of data
   esUtil_win.cpp
   esUtil.cpp
   esShader.cpp
   Generating Code...
-C:\Dont let money drop ( true)\Utilities\src\U_Math.cpp(205,13): warning C4244:  'return': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1445,5): warning MSB8012: TargetPath(C:\Dont let money drop ( true)\\BIN-Nvidia\Utilities.lib) does not match the Library's OutputFile property value (C:\Dont let money drop ( true)\BIN-Nvidia\UtilitiesD.lib). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\Utilities\src\U_Math.cpp(205,13): warning C4244:  'return': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1445,5): warning MSB8012: TargetPath(C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\\BIN-Nvidia\Utilities.lib) does not match the Library's OutputFile property value (C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\BIN-Nvidia\UtilitiesD.lib). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(1447,5): warning MSB8012: TargetName(Utilities) does not match the Library's OutputFile property value (UtilitiesD). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Lib.OutputFile).
-  Utilities.vcxproj -> C:\Dont let money drop ( true)\\BIN-Nvidia\Utilities.lib
+  Utilities.vcxproj -> C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\\BIN-Nvidia\Utilities.lib

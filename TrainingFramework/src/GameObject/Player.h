@@ -4,6 +4,18 @@
 #include "Sword.h"
 class Player : public Sprite2D
 {
+private:
+	Vector2 m_desPosition;
+	int m_blood;
+	float  m_sizeCollide;
+	float m_damage;
+	float m_speed;
+	float m_timeContinue;
+	float m_maxTimeContinue;
+	bool m_isAlive;
+
+	float distance(Vector2 position, Vector2 destination);
+
 public:
 	Player(std::shared_ptr<Models>& model, std::shared_ptr<Shaders>& shader, std::shared_ptr <Texture>& texture);
 	~Player();
@@ -17,21 +29,9 @@ public:
 	float getConllideSize();
 	void setBlood(int blood);
 	int getBlood();
-	bool isLive();
+	bool isAlive();
 
-
-private:
-	Vector2 m_position;
-	bool m_active;
-	int m_blood;
-	float  m_sizecollide;
-	float m_damage;
-	float m_speed;
-	float m_maxspeed;
-	float m_timeContinue;
-	float m_maxTimeContinue;
-
-	float distance(Vector2 position, Vector2 destination);
+		
 
 };
 
