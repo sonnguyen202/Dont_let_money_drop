@@ -267,10 +267,14 @@ void GSPlay::createRandomCoin()
 			return;
 		}
 	}
-	
+	std::string coinrand = "";
+	int flag = rand() % 3;
+	if (flag == 1) coinrand = "Coin";
+	else if (flag == 2) coinrand = "Star";
+	else coinrand = "Key";
 	auto mod = ResourceManagers::GetInstance()->GetModel("Sprite2D");
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("Coin");
+	auto texture = ResourceManagers::GetInstance()->GetTexture(coinrand);
 
 	std::shared_ptr<Coin> coin = std::make_shared<Coin>( mod, shader, texture);
 	coin->Set2DPosition(pos);

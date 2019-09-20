@@ -74,7 +74,7 @@ void GSMenu::Init()
 	//text game title
 	shader = ResourceManagers::GetInstance()->GetShader("TextShader");
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
-	m_Text_gameName = std::make_shared< Text>(shader, font, "Dont let money drop", TEXT_COLOR::RED, 0.7);
+	m_Text_gameName = std::make_shared< Text>(shader, font, "", TEXT_COLOR::RED, 0.7);
 	m_Text_gameName->Set2DPosition(Vector2(screenWidth / 2 - 80, 120));
 
 	menusong.load("C:/Users/black/OneDrive/Máy tính/Dont_let_money_drop/Data/Sound/background.mp3");

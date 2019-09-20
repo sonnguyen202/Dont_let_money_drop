@@ -37,6 +37,8 @@ void GSGameOver::Init()
 	m_listButton.push_back(button);
 }
 
+
+
 void GSGameOver::Exit()
 {
 }
