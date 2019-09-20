@@ -1,4 +1,5 @@
 #include"GSGameOver.h"
+#include <GameStates\GSPlay.h>
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
 
@@ -14,8 +15,9 @@ GSGameOver::~GSGameOver()
 
 void GSGameOver::Init()
 {
+	GSPlay::deInit();
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_help");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("game_over");
 
 	//BackGround
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
@@ -27,7 +29,7 @@ void GSGameOver::Init()
 	//home button
 	texture = ResourceManagers::GetInstance()->GetTexture("button_back");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(screenWidth / 2, 100);
+	button->Set2DPosition(screenWidth / 2, 500);
 	button->SetSize(200, 50);
 	button->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Menu);

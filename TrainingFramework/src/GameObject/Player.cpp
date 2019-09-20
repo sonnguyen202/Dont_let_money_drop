@@ -8,9 +8,9 @@ Player::Player(std::shared_ptr<Models>& mod, std::shared_ptr<Shaders>& shader, s
 {
 	m_desPosition = Vector2(0, 0);
 	m_blood = 3;
-	m_sizeCollide = 15; 
+	m_sizeCollide = 20; 
 	m_damage = 0;
-	m_speed = 400;
+	m_speed = 300;
 	m_isAlive = true;
 
 }

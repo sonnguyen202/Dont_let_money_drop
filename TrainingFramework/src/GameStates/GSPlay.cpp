@@ -1,5 +1,6 @@
 #include <sstream>
 #include <iomanip>
+#include <thread>
 #include "Shaders.h"
 #include "Texture.h"
 #include "Models.h"
@@ -18,11 +19,14 @@ extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
 
 int GSPlay::m_score = 0;
+SoLoud::Soloud* GSPlay::soloud1 = new SoLoud::Soloud;
+
 
 GSPlay::GSPlay()
 {
 	m_delayTime = 0.2;
 	m_score = 0;
+	m_cloudDelayTime = 10;
 }
 
 
@@ -34,8 +38,9 @@ GSPlay::~GSPlay()
 
 void GSPlay::Init()
 {
+	
 	auto model = ResourceManagers::GetInstance()->GetModel("Sprite2D");
-	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_play2");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("bg_play");
 
 	//BackGround
 	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
@@ -49,7 +54,8 @@ void GSPlay::Init()
 	button->Set2DPosition(screenWidth - 950, 100);
 	button->SetSize(100, 50);
 	button->SetOnClick([] {
-		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Menu);
+		//GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Menu);
+		GameStateMachine::GetInstance()->PopState();
 		});
 
 	m_listButton.push_back(button);
@@ -59,7 +65,7 @@ void GSPlay::Init()
 	m_Player = std::make_shared<Player >(model, shader, texture);
 	m_Player->Set2DPosition(screenWidth / 2, screenHeight - 160);
 	m_Player->Move(Vector2(screenWidth / 2, screenHeight - 200));
-	m_Player->SetSize(100, 140);
+	m_Player->SetSize(120, 140);
 	
 
 	//text game title
@@ -69,7 +75,12 @@ void GSPlay::Init()
 	m_scoreText->Set2DPosition(Vector2(5, 25));
 	m_bloodText = std::make_shared< Text>(shader, font, "Blood: ", TEXT_COLOR::RED, 0.8);
 	m_bloodText ->Set2DPosition(Vector2(5, 50));
+
+	menusong.load(".../Data/Sound/background.mp3");
+	Resume();
 }
+
+
 
 void GSPlay::Exit()
 {
@@ -84,6 +95,8 @@ void GSPlay::Pause()
 
 void GSPlay::Resume()
 {
+	soloud1->init();
+	soloud1->play(menusong);
 
 }
 
@@ -110,7 +123,12 @@ void GSPlay::HandleTouchEvents(int x, int y, bool bIsPressed)
 	for (auto it : m_listButton)
 	{
 		(it)->HandleTouchEvents(x, y, bIsPressed);
-		if ((it)->IsHandle()) break;
+		if ((it)->IsHandle())
+		{
+			//menusong.stop();
+			//soloud1->deinit();
+				break;
+		}
 	}
 }
 
@@ -128,6 +146,17 @@ void GSPlay::Update(float deltaTime)
 		else createRandomeSword();
 
 		m_delayTime = 0.2;
+	}
+
+	if (m_cloudDelayTime > 0)
+	{
+		m_cloudDelayTime -= deltaTime;
+	}
+	if (m_cloudDelayTime <= 0)
+	{
+		createRandomCloud();
+
+		m_cloudDelayTime = 10;
 	}
 	for (auto it : m_listButton)
 	{
@@ -149,6 +178,10 @@ void GSPlay::Update(float deltaTime)
 	for (auto sword : list_Sword)
 	{
 		sword ->Update(deltaTime);
+	}
+	for (auto cloud : list_Cloud)
+	{
+		cloud->Update(deltaTime);
 	}
 
 	//update score
@@ -179,6 +212,10 @@ void GSPlay::Draw()
 		if (sword->isActive())
 			sword->Draw();
 
+
+	for (auto cloud : list_Cloud)
+		cloud->Draw();
+
 	
 		
 	m_scoreText->Draw();
@@ -188,6 +225,31 @@ void GSPlay::Draw()
 	}
 	m_bloodText->Draw();
 	
+}
+
+void GSPlay::createRandomCloud()
+{
+	int num = rand() % (screenHeight/2 - 100 + 1) + 100;
+	Vector2 pos;
+	pos.y = num;
+	pos.x = 100;
+	for (auto cloud : list_Cloud)
+	{
+		if (cloud->isActive())
+		{
+			cloud->setActive(true);
+			cloud->Set2DPosition(pos);
+			return;
+		}
+	}
+	auto mod = ResourceManagers::GetInstance()->GetModel("Sprite2D");
+	auto shader = ResourceManagers::GetInstance()->GetShader("TextureShader");
+	auto texture = ResourceManagers::GetInstance()->GetTexture("Cloud");
+
+	std::shared_ptr<Cloud> cloud = std::make_shared<Cloud>(mod, shader, texture);
+	cloud->Set2DPosition(pos);
+	cloud->SetSize(200, 80);
+	list_Cloud.push_back(cloud);
 }
 
 void GSPlay::createRandomCoin()
@@ -212,13 +274,13 @@ void GSPlay::createRandomCoin()
 
 	std::shared_ptr<Coin> coin = std::make_shared<Coin>( mod, shader, texture);
 	coin->Set2DPosition(pos);
-	coin->SetSize(39, 52.5);
+	coin->SetSize(40, 40);
 	list_Coin.push_back(coin);
 }
 
 void GSPlay::createRandomeSword()
 {
-	int num = rand() % ( screenWidth - 50 +1) + 50;
+	int num = rand() % ( screenWidth - 30 +1 ) + 30;
 	Vector2 pos;
 	pos.x = num;
 	pos.y = 10;
@@ -238,7 +300,7 @@ void GSPlay::createRandomeSword()
 
 	std::shared_ptr<Sword> sword = std::make_shared<Sword>(mod, shader, texture);
 	sword->Set2DPosition(pos);
-	sword->SetSize(39, 100);
+	sword->SetSize(45, 140);
 	list_Sword.push_back(sword);
 
 }

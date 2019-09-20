@@ -4,7 +4,7 @@
 #include "utilities.h" 
 #include <MemoryOperators.h>
 
-GLint screenWidth = 1000;
+GLint screenWidth = 500;
 GLint screenHeight = 800;
 
 
@@ -67,7 +67,7 @@ GLint _tmain(GLint argc, _TCHAR* argv[])
 	CleanUp();
 
 	//identifying memory leaks
-	MemoryDump();
+	//MemoryDump();
 	//printf("Press any key...\n");
 	//_getch();
 

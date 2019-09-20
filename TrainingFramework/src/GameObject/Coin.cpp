@@ -25,21 +25,20 @@ bool Coin::isActive() {
 
 void Coin::Update(float deltaTime)
 {
-	//if (!m_active) 
-	//{
-	//	return;
-	//}
-
-	//if (m_timeContinue > 0)
-	//{
-	//	m_timeContinue = m_timeContinue - deltaTime;
-	//}
-
 
 	Vector2 position = Get2DPosition();
-	position.y = position.y + m_speed * deltaTime;
-	Set2DPosition(position);
+	if (GSPlay::m_score <= 20)
+	{
+		position.y = position.y + m_speed * deltaTime;
+	}
+	if (GSPlay::m_score > 20 && GSPlay::m_score <= 50) {
+		position.y = position.y + m_maxspeed * deltaTime;
+	}
+	if (GSPlay::m_score > 50) {
+		position.y = position.y + (m_maxspeed + 500) * deltaTime;
 
+	}
+	Set2DPosition(position);
 }
 
 void Coin::setDamge(float damage) {

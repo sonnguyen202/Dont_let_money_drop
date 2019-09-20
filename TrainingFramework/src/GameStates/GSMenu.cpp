@@ -2,6 +2,7 @@
 
 extern int screenWidth; //need get on Graphic engine
 extern int screenHeight; //need get on Graphic engine
+SoLoud::Soloud* GSMenu::soloud = new SoLoud::Soloud;
 
 GSMenu::GSMenu()
 {
@@ -11,6 +12,8 @@ GSMenu::GSMenu()
 
 GSMenu::~GSMenu()
 {
+	//delete soloud;
+
 }
 
 
@@ -26,31 +29,31 @@ void GSMenu::Init()
 	m_BackGround->Set2DPosition(screenWidth / 2, screenHeight / 2);
 	m_BackGround->SetSize(screenWidth, screenHeight);
 
-	// help button
-	texture = ResourceManagers::GetInstance()->GetTexture("button_back");
+	// play button
+	texture = ResourceManagers::GetInstance()->GetTexture("button_play");
 	std::shared_ptr<GameButton> button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(screenWidth / 2, 400);
+	button->Set2DPosition(screenWidth / 2, 300);
 	button->SetSize(200, 50);
 	button->SetOnClick([]() {
-		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Help);
+		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Play);
 		});
 
 	m_listButton.push_back(button);
 
-	//play button
-	texture = ResourceManagers::GetInstance()->GetTexture("button_play");
+	//help button
+	texture = ResourceManagers::GetInstance()->GetTexture("button_help");
 	button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(screenWidth / 2, 500);
+	button->Set2DPosition(screenWidth / 2, 400);
 	button->SetSize(200, 50);
-	button->SetOnClick([]() {
-		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Play);
+	button->SetOnClick([]() {		
+		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Help);
 		});
 	m_listButton.push_back(button);
 
 	//setting button
 	texture = ResourceManagers::GetInstance()->GetTexture("button_setting");
 	button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(screenWidth / 2, 600);
+	button->Set2DPosition(screenWidth / 2, 500);
 	button->SetSize(200, 50);
 	button->SetOnClick([]() {
 		GameStateMachine::GetInstance()->ChangeState(StateTypes::STATE_Setting);
@@ -58,9 +61,9 @@ void GSMenu::Init()
 	m_listButton.push_back(button);
 
 	//exit button
-	texture = ResourceManagers::GetInstance()->GetTexture("button_quit");
+	texture = ResourceManagers::GetInstance()->GetTexture("button_exit");
 	button = std::make_shared<GameButton>(model, shader, texture);
-	button->Set2DPosition(screenWidth / 2, 700);
+	button->Set2DPosition(screenWidth / 2, 600);
 	button->SetSize(200, 50);
 	button->SetOnClick([]() {
 		exit(0);
@@ -73,7 +76,11 @@ void GSMenu::Init()
 	std::shared_ptr<Font> font = ResourceManagers::GetInstance()->GetFont("arialbd");
 	m_Text_gameName = std::make_shared< Text>(shader, font, "Dont let money drop", TEXT_COLOR::RED, 0.7);
 	m_Text_gameName->Set2DPosition(Vector2(screenWidth / 2 - 80, 120));
+
+	menusong.load("C:/Users/black/OneDrive/Máy tính/Dont_let_money_drop/Data/Sound/background.mp3");
+	Resume();
 }
+
 
 void GSMenu::Exit()
 {
@@ -87,7 +94,8 @@ void GSMenu::Pause()
 
 void GSMenu::Resume()
 {
-
+	soloud->init();
+	soloud->play(menusong);
 }
 
 
@@ -111,7 +119,13 @@ void GSMenu::HandleTouchEvents(int x, int y, bool bIsPressed)
 	for (auto it : m_listButton)
 	{
 		(it)->HandleTouchEvents(x, y, bIsPressed);
-		if ((it)->IsHandle()) break;
+		if ((it)->IsHandle())
+		{
+			menusong.stop();
+			soloud->deinit();
+			//delete soloud;
+
+		}
 	}
 }
 

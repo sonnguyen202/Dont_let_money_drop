@@ -1,19 +1,21 @@
 ﻿  cl : Command line warning D9035 : option 'Gm' has been deprecated and will be removed in a future release
   GSPlay.cpp
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(24,19): warning C4305:  '=': truncation from 'double' to 'float'
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(43,60): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(43,42): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(49,36): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(60,56): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(60,38): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(61,55): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(61,37): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(104,28): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(104,25): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(130,20): warning C4305:  '=': truncation from 'double' to 'float'
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(197,10): warning C4244:  '=': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(215,20): warning C4244:  'argument': conversion from 'double' to 'GLint', possible loss of data
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(223,10): warning C4244:  '=': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\Include\soloud.h(37,1): warning C4005:  'WIN32_LEAN_AND_MEAN': macro redefinition
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\Include\AMD\EGL\eglplatform.h(67): message :  see previous definition of 'WIN32_LEAN_AND_MEAN'
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(27,19): warning C4305:  '=': truncation from 'double' to 'float'
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(48,60): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(48,42): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(54,36): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(66,56): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(66,38): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(67,55): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(67,37): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(117,28): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(117,25): warning C4244:  'argument': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(148,20): warning C4305:  '=': truncation from 'double' to 'float'
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(234,10): warning C4244:  '=': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(259,10): warning C4244:  '=': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(285,10): warning C4244:  '=': conversion from 'int' to 'GLfloat', possible loss of data
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1555,71): warning C4244:  'argument': conversion from '_Ty' to 'float', possible loss of data
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1555,71): warning C4244:         with
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1555,71): warning C4244:         [
@@ -29,5 +31,5 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.2
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1608): message :         [
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1608): message :             _Ty=Text
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.22.27905\include\memory(1608): message :         ]
-C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(68): message :  see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[8],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[8],TEXT_COLOR &&,double &&)' being compiled
+C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\TrainingFramework\src\GameStates\GSPlay.cpp(74): message :  see reference to function template instantiation 'std::shared_ptr<Text> std::make_shared<Text,std::shared_ptr<Shaders>&,std::shared_ptr<Font>&,const char(&)[8],TEXT_COLOR,double>(std::shared_ptr<Shaders> &,std::shared_ptr<Font> &,const char (&)[8],TEXT_COLOR &&,double &&)' being compiled
   TrainingFramework.vcxproj -> C:\Users\black\OneDrive\Máy tính\Dont_let_money_drop\\BIN-Nvidia\TrainingFramework.exe

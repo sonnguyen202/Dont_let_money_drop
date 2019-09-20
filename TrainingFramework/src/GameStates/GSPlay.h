@@ -1,6 +1,9 @@
 #pragma once
 #include "gamestatebase.h"
 #include "GameButton.h"
+#include "soloud.h"
+#include "soloud_wav.h"
+#include "Cloud.h"
 
 class Sprite2D;
 class Sprite3D;
@@ -23,9 +26,16 @@ private:
 	std::shared_ptr<Text> m_bloodText;
 	std::vector<std::shared_ptr<Coin>> list_Coin;
 	std::vector<std::shared_ptr<Sword>> list_Sword;
+	std::vector<std::shared_ptr<Cloud>> list_Cloud;
+	float m_cloudDelayTime;
 	float m_delayTime;
 	void createRandomCoin();
 	void createRandomeSword();
+	void createRandomCloud();
+	static SoLoud::Soloud* soloud1;
+	SoLoud::Wav menusong, touch;
+	
+
 
 public:
 	GSPlay();
@@ -41,6 +51,13 @@ public:
 	void HandleKeyEvents(int key, bool bIsPressed);
 	void HandleTouchEvents(int x, int y, bool bIsPressed);
 	void HandleMouseEvents(int x, int y) ;
+	static void deInit() {
+		//static SoLoud::Soloud* soloud;
+		SoLoud::Wav menusong, touch;
+		menusong.stop();
+		soloud1->deinit();
+	}
+	
 
 
 	void Update(float deltaTime) override;

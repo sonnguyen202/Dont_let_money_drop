@@ -31,6 +31,7 @@ public:
 	void ChangeState(std::shared_ptr<GameStateBase> state);
 	void ChangeState(StateTypes stt);
 	void PushState(StateTypes stt);
+	//void PopState(StateTypes stt);
 	void PopState();
 
 	bool isRunning() { return m_running; }

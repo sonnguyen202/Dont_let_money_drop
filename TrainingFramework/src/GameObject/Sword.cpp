@@ -37,7 +37,17 @@ void Sword::Update(float deltaTime)
 
 
 	Vector2 position = Get2DPosition();
-	position.y = position.y + m_speed * deltaTime;
+	if (GSPlay::m_score <= 20)
+	{
+		position.y = position.y + m_speed * deltaTime;
+	}
+	if(GSPlay::m_score > 20 && GSPlay::m_score <= 50) {
+		position.y = position.y + m_maxspeed * deltaTime;
+	}
+	if(GSPlay::m_score > 50) {
+		position.y = position.y + ( m_maxspeed + 500) * deltaTime;
+
+	}
 	Set2DPosition(position);
 
 	

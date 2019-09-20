@@ -50,6 +50,7 @@ void GameStateMachine::PushState(StateTypes stt)
 	m_pNextState = state;
 }
 
+
 void GameStateMachine::PopState()
 {
 	// cleanup the current state
@@ -60,6 +61,7 @@ void GameStateMachine::PopState()
 
 	// resume previous state
 	if (!m_StatesStack.empty()) {
+		m_pActiveState = m_StatesStack.back();
 		m_StatesStack.back()->Resume();
 	}
 }
